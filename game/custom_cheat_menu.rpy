@@ -3,9 +3,15 @@
 # Author: Lounger
 # Game: The Headmaster v0.8.2.1public-pc
 # Description:
-#   Adds a menu that allows you to start a punishment game
-#   at all times, without advancing the day. Also adds keybinds
-#   for modifying Action Points required for punishments.
+#   Adds a menu that allows you to start a punishment game at all times,
+#   without advancing the day. Also adds keybinds for modifying
+#   Action Points required for punishments.
+# WARNING:
+#   Using anything in this menu while you haven't finished the game will LIKELY
+#   skip certain scenes for you. For example, this mod will force you into the
+#   punishment games, in a standard game-mode (not a replay). This means that you
+#   can advance a character's level and potentially skip story elements.
+#   Always back up your save games! You have been warned.
 
 
 ### Configuration ################################################################
@@ -108,7 +114,7 @@ init 10 python:
     config.underlay.append(renpy.Keymap(cheat_increase_ap = Function(mod_action_points, 1)))
     config.underlay.append(renpy.Keymap(show_cheat_menu = Function(toggle_menu)))
 
-    # Bind the specified keys to the previously create keymaps
+    # Bind the specified keys to the previously created keymaps
     for k, v in KEY_BINDS.items():
         config.keymap[k] = v
 
