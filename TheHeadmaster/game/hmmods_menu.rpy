@@ -1,5 +1,5 @@
-# custom_cheat_menu
-# Version: 0.2
+# hmmods_menu
+# Version: 0.2.1
 # Author: Lounger
 # Game: The Headmaster v0.8.2.1public-pc
 # Description:
@@ -23,7 +23,7 @@ define KEY_BINDS = {
     "show_cheat_menu": [ "K_c" ]
 }
 
-define MENU_SCREEN_NAME = "custom_cheat_menu"
+define MENU_SCREEN_NAME = "hmmods_menu"
 
 
 ### Base initialization and helper functions #####################################
@@ -180,8 +180,8 @@ style cheat_menu_button_text is text:
     hover_color gui.hover_color
     size 19
 
-screen custom_cheat_menu:
-    tag custom_cheat_menu
+screen hmmods_menu:
+    tag hmmods_menu
     zorder 20
     modal True
 
