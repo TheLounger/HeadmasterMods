@@ -29,8 +29,9 @@ define MENU_SCREEN_NAME = "hmmods_menu"
 ### Base initialization and helper functions #####################################
 
 init -1 python hide:
-    # Set this to True if you want to enable developer mode
-    config.developer = False
+    # Set this to True if you want to enable developer mode. For more info,
+    # see https://www.renpy.org/doc/html/config.html#var-config.developer
+    config.developer = "auto"
 
 init 10 python:
     ### Init ############################
