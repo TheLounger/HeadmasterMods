@@ -1,5 +1,5 @@
 # hmmods_menu
-# Version: 0.2.1
+# Version: 0.2.2
 # Author: Lounger
 # Game: The Headmaster v0.8.2.1public-pc
 # Description:
