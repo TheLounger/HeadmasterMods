@@ -45,8 +45,6 @@ init python:
     game_state.daytime = None
 
     mod_menu_showing = False
-    punish_character = None
-    return_to_label = None
 
     ### Functions #######################
 
@@ -125,10 +123,10 @@ init python:
 
 # Prepares for and starts a punishment game, then jumps to the default scene
 # of the current game state, and thus not advancing the time of day
-label pre_punish:
+label start_punishment_game(character):
 
     # Store the map screen label name of the current day and daytime
-    $ return_to_label = get_current_premap_label()
+    $ jump_back_to = get_current_premap_label()
 
     # Hide all screens
     call screen_hider
@@ -137,11 +135,10 @@ label pre_punish:
     stop music
 
     # Start punishment game for the specified character
-    $ renpy.call("%s_punish" % punish_character)
+    call expression "%s_punish" % character
 
-    # Reset and jump to the default scene 
-    $ punish_character = None
-    $ renpy.jump(return_to_label)
+    # Jump to the default scene 
+    $ renpy.jump(jump_back_to)
 
 
 ### Styles, screens and images ###########################################################
@@ -176,34 +173,33 @@ screen hmmods_menu:
 
     frame:
         style "menu_frame"
-        vbox:
-            spacing 14
+        vbox spacing 20:
+
             text _("Punish") style "menu_header_text"
 
-            hbox:
-                spacing 20
-                vbox:
+            # Character image buttons
+            hbox spacing 14:
+                vbox spacing 6:
                     text "Amy" style "menu_text"
                     imagebutton:
                         auto "punish_image_amy_%s"
-                        action [ SetVariable("punish_character", "amy"), Jump("pre_punish") ]
-                vbox:
+                        action Call("start_punishment_game", "amy")
+
                     text "Cassandra" style "menu_text"
                     imagebutton:
                         auto "punish_image_cass_%s"
-                        action [ SetVariable("punish_character", "cass"), Jump("pre_punish") ]
-            hbox:
-                spacing 20
-                vbox:
+                        action Call("start_punishment_game", "cass")
+
+                vbox spacing 6:
                     text "Debbie" style "menu_text"
                     imagebutton:
                         auto "punish_image_debbie_%s"
-                        action [ SetVariable("punish_character", "debbie"), Jump("pre_punish") ]
-                vbox:
+                        action Call("start_punishment_game", "debbie")
+
                     text "Rachel" style "menu_text"
                     imagebutton:
                         auto "punish_image_rachel_%s"
-                        action [ SetVariable("punish_character", "rachel"), Jump("pre_punish") ]
+                        action Call("start_punishment_game", "rachel")
 
 # Initialze all images used by the menu and the gallery
 init:
