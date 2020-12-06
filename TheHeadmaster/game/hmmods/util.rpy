@@ -1,9 +1,22 @@
-init python:
+init -1 python:
     class Util():
+        @staticmethod
+        def add_underlay_keymap(**keymap):
+            """
+            Add keymaps to config.underlay, while checking if names don't exist
+            in config.keymap, in which case they will be ignored
+            """
+
+            # Filter out args that aren't in config.keymap
+            keymap = { k: v for k, v in keymap.items() if k in config.keymap }
+
+            if len(keymap) > 0:
+                config.underlay.append(renpy.Keymap(**keymap))
+
         @staticmethod
         def is_webp_header(h):
             """
-            Tests a file header looks like WebP
+            Tests whether a file header looks like WebP
             "imghdr.what" only supports WebP since Python 3.5
             """
 

@@ -7,13 +7,14 @@ init python:
     # Sets a function to be called every time the game enters a label
     config.label_callback = gm.game_state.label_callback
 
-    # Create keymaps. These define the actions to be performed when a keybind is pressed
-    config.underlay.append(renpy.Keymap(toggle_gallery_window = Function(gm.windows.toggle, "gallery")))
-    config.underlay.append(renpy.Keymap(toggle_punish_window = Function(gm.windows.toggle, "punish")))
-
-    # Bind the specified keys to the previously created keymaps
+    # Define keys for the keymaps specified below
     for k, v in KEY_BINDS.items():
         config.keymap[k] = v
+
+    # Create keymaps. These define the actions to be performed when a keybind is pressed.
+    # Any names that aren't in KEY_BINDS will automatically be ignored
+    Util.add_underlay_keymap(toggle_gallery_window=Function(gm.windows.toggle, "gallery"))
+    Util.add_underlay_keymap(toggle_punish_window=Function(gm.windows.toggle, "punish"))
 
     # Instantiate all windows
     gm.windows.add(Gallery())

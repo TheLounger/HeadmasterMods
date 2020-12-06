@@ -42,6 +42,5 @@ init -1 python:
     # Otherwise, will move the image in the selected direction
     GALLERY_TRANSFORM_NATURAL = True
 
-    
     # How many items should be displayed at once on the gallery browser
     GALLERY_PAGE_ITEMS = 20
