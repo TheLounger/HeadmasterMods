@@ -43,18 +43,21 @@ init -1 python:
             return False
 
         def show(self, name):
-            win = self.get(name)
-            if win:
-                win.show()
+            if gm.game_state.is_game_ready():
+                win = self.get(name)
+                if win:
+                    win.show()
 
         def show_all(self):
-            for i in self.__windows:
-                i.show()
+            if gm.game_state.is_game_ready():
+                for i in self.__windows:
+                    i.show()
 
         def toggle(self, name):
-            win = self.get(name)
-            if win:
-                if renpy.get_screen(win.screen_name):
-                    win.hide()
-                else:
-                    win.show()
+            if gm.game_state.is_game_ready():
+                win = self.get(name)
+                if win:
+                    if renpy.get_screen(win.screen_name):
+                        win.hide()
+                    else:
+                        win.show()
