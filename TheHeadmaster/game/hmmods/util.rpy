@@ -1,4 +1,6 @@
 init -1 python:
+    import re
+
     class Util():
         @staticmethod
         def add_underlay_keymap(**keymap):
