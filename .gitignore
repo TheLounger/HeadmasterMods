@@ -5,9 +5,7 @@
 
 # Custom additions
 .vscode/
-dist/
-src_old/
-CHANGES.md
+*.rpyc
 
 # User-specific files
 *.rsuser
