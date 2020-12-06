@@ -5,4 +5,4 @@ screen hmmods_gallery:
 
     # Background
     add "#000000":
-        alpha GALLERY_DEFAULT_BG_ALPHA
+        alpha features.gallery.bg_alpha

@@ -10,8 +10,8 @@ init -1 python:
         def add(self, win):
             if win and not self.get(win.name):
                 self.__windows.append(win)
-                return True
-            return False
+                return win
+            return None
 
         def get(self, name):
             result = list(filter(lambda win: win.name == name, self.__windows))

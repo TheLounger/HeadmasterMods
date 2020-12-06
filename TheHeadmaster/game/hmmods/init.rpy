@@ -16,9 +16,14 @@ init python:
     Util.add_underlay_keymap(toggle_gallery_window=Function(gm.windows.toggle, "gallery"))
     Util.add_underlay_keymap(toggle_punish_window=Function(gm.windows.toggle, "punish"))
 
-    # Instantiate all windows
-    gm.windows.add(Gallery())
-    gm.windows.add(Punish())
+    # Setup all features
+    features = { }
+    features.gallery = Gallery()
+    features.punish = Punish()
+
+    # Add all features to window manager
+    for i in vars(features).values():
+        gm.windows.add(i)
 
 
 # Initialize common images

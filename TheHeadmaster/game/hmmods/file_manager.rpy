@@ -1,4 +1,4 @@
-init python:
+init -1 python:
     import imghdr
 
     class FileManager():
