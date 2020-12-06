@@ -1,7 +1,6 @@
 style menu_frame:
     xanchor 0
     yanchor 0
-    # xmaximum 315
     ymaximum 880
     xpadding 14
     ypadding 14

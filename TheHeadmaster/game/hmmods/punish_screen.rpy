@@ -6,6 +6,8 @@ screen hmmods_punish:
     drag:
         drag_name "punish"
         dragged gm.windows.on_drag
+        xpos features.punish.position.x
+        ypos features.punish.position.y
 
         frame:
             style "menu_frame"

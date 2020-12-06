@@ -25,6 +25,21 @@ init -1 python:
             """
             return self.__images
 
+        def get_image(self, file_name):
+            """
+            Tries to find an ImageInfo instance of a file with name ``file_name``
+            """
+
+            if len(self.__images) == 0:
+                self.refresh_images()
+
+            if len(self.__images) > 0 and isinstance(file_name, unicode):
+                file_name = file_name.lower()
+                result = list(filter(lambda i: i.file_name.lower() in file_name, self.__images))
+
+                if len(result) > 0:
+                    return result[0]
+
         def refresh_files(self):
             """
             Refreshes the list of all files in the game
@@ -38,9 +53,7 @@ init -1 python:
             """
 
             self.__images = [ ]
-
-            if len(self.__files) == 0:
-                self.refresh_files()
+            self.refresh_files()
 
             if len(self.__files) > 0:
                 for i in self.__files:
@@ -56,7 +69,7 @@ init -1 python:
             self.__type = None
 
             self.file_path = path
-            self.image_index = image_index
+            self.index = image_index
 
             # Just chop off "images/", we still want subfolders in the path
             if path.startswith("images/"):

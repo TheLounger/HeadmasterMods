@@ -8,8 +8,8 @@ init -2 python:
 
         def __init__(self):
             self.position = { }
-            self.position.x = 0
-            self.position.y = 0
+            self.position.x = DEFAULT_WINDOW_POSITION["x"]
+            self.position.y = DEFAULT_WINDOW_POSITION["y"]
 
         @abstractproperty
         def name(self):

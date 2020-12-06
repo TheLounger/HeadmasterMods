@@ -27,6 +27,7 @@ init -1 python:
     }
 
     # Default values/settings
+    DEFAULT_WINDOW_POSITION =  { "x": 145, "y": 84 }
     GALLERY_DEFAULT_ZOOM = 1.0
     GALLERY_DEFAULT_POSITION = { "x": 0.5, "y": 0.5 }
     GALLERY_DEFAULT_BG_ALPHA = 0.85
