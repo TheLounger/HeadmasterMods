@@ -41,7 +41,7 @@ init -1 python:
 
     # If True, will move gallery image from the player's POV (i.e.: 'down' moves image up)
     # Otherwise, will move the image in the selected direction
-    GALLERY_TRANSFORM_NATURAL = True
+    GALLERY_TRANSFORM_NATURAL = False
 
     # How many items should be displayed at once on the gallery browser
     GALLERY_PAGE_ITEMS = 20

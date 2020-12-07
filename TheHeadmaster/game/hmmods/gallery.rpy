@@ -19,7 +19,7 @@ init -1 python:
             return "gallery"
 
         @property
-        def ready(self):
+        def showing_image(self):
             return self.showing and self.__image is not None
 
         @property
@@ -110,7 +110,7 @@ init -1 python:
             """
             Sets the main image based on an offset in the file list
             """
-            if self.ready:
+            if self.showing:
                 index = 0
                 if self.__image is not None:
                     index = self.__image.index + offset
@@ -125,7 +125,7 @@ init -1 python:
             """
             Sets the main image's zoom
             """
-            if self.ready:
+            if self.showing:
                 self.__image_zoom = min(2.0, max(0.05, zoom))
 
         def modify_image_zoom(self, modifier=0.0):
@@ -138,7 +138,7 @@ init -1 python:
             """
             Sets the main image's position
             """
-            if self.ready:
+            if self.showing_image:
                 pos = GALLERY_DEFAULT_POSITION.copy()
 
                 if x is not None:

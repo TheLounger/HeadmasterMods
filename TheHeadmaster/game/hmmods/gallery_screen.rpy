@@ -18,7 +18,7 @@ screen hmmods_gallery:
             ypos features.gallery.image_position["y"]
             zoom features.gallery.image_zoom
 
-    # Image file browser
+    # File browser
     if features.gallery.show_browser:
         drag:
             drag_name "gallery"
@@ -79,3 +79,47 @@ screen hmmods_gallery:
                                             style "menu_button"
                                             text_style "menu_button_text_tiny"
                                             action Function(features.gallery.set_image, i)
+
+    # Image controls and info
+    if features.gallery.showing:
+        hbox spacing 20 xalign 0.01 yalign 0.99:
+
+            vbox spacing 20:
+
+                imagebutton:
+                    idle "screens/minus.png"
+                    hover "screens/minus_hover.png"
+                    action Function(features.gallery.modify_image_zoom, -0.05)
+
+                imagebutton:
+                    auto "gui_one_%s"
+                    action Function(features.gallery.set_image_zoom, GALLERY_DEFAULT_ZOOM)
+
+                imagebutton:
+                    idle "screens/plus.png"
+                    hover "screens/plus_hover.png"
+                    action Function(features.gallery.modify_image_zoom, 0.05)
+
+            vbox spacing 20 yalign 0.977:
+
+                text "{}%".format(round(100 * features.gallery.image_zoom))
+
+                if features.gallery.image:
+                    text "[[{}] {}".format(features.gallery.image.index + 1, features.gallery.image.file_path)
+                else:
+                    text _("[[No image]")
+
+        # Technical info
+        if not config.developer in ["auto", False]:
+            vbox xalign 0.99 yalign 0.01:
+
+                text "xpos: {} ({})  ypos: {} ({})".format(
+                        config.screen_width * features.gallery.image_position["x"],
+                        features.gallery.image_position["x"],
+                        config.screen_height * features.gallery.image_position["y"],
+                        features.gallery.image_position["y"]):
+                    color "#555"
+
+                if features.gallery.image:
+                    text "Image type: {}".format(features.gallery.image.get_image_type() or "Unknown"):
+                        color "#555"

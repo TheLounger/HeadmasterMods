@@ -26,7 +26,6 @@ init python:
     Util.add_underlay_keymap(toggle_punish_window=Function(gm.windows.toggle, "punish"))
     Util.add_underlay_keymap(gallery_prev_image=Function(features.gallery.cycle_image, -1))
     Util.add_underlay_keymap(gallery_next_image=Function(features.gallery.cycle_image, 1))
-
     Util.add_underlay_keymap(gallery_zoom_out=Function(features.gallery.modify_image_zoom, -0.05))
     Util.add_underlay_keymap(gallery_zoom_in=Function(features.gallery.modify_image_zoom, 0.05))
     Util.add_underlay_keymap(gallery_zoom_reset=Function(features.gallery.set_image_zoom, GALLERY_DEFAULT_ZOOM))
