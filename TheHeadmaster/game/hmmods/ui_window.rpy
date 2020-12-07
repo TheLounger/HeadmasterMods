@@ -19,6 +19,10 @@ init -2 python:
         def screen_name(self):
             return SCREEN_NAME_PREFIX + self.name
 
+        @property
+        def showing(self):
+            return renpy.get_screen(self.screen_name)
+
         # @abstractmethod
         def hide(self):
             renpy.hide_screen(self.screen_name)

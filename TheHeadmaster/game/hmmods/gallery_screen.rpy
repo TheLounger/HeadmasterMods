@@ -78,6 +78,4 @@ screen hmmods_gallery:
                                         textbutton "{}: {}".format(i + 1, gm.files.all_images[i].file_name):
                                             style "menu_button"
                                             text_style "menu_button_text_tiny"
-                                            # action NullAction() #Function(show_gallery, image_index=i)
-                                            # action SetVariable("features.gallery.image", gm.files.all_images[i])
                                             action Function(features.gallery.set_image, i)

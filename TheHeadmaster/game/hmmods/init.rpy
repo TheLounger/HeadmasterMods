@@ -7,15 +7,6 @@ init python:
     # Sets a function to be called every time the game enters a label
     config.label_callback = gm.game_state.label_callback
 
-    # Define keys for the keymaps specified below
-    for k, v in KEY_BINDS.items():
-        config.keymap[k] = v
-
-    # Create keymaps. These define the actions to be performed when a keybind is pressed.
-    # Any names that aren't in KEY_BINDS will automatically be ignored
-    Util.add_underlay_keymap(toggle_gallery_window=Function(gm.windows.toggle, "gallery"))
-    Util.add_underlay_keymap(toggle_punish_window=Function(gm.windows.toggle, "punish"))
-
     # Setup all features
     features = { }
     features.gallery = Gallery()
@@ -24,6 +15,26 @@ init python:
     # Add all features to window manager
     for i in vars(features).values():
         gm.windows.add(i)
+
+    # Define keys for the keymaps specified below
+    for k, v in KEY_BINDS.items():
+        config.keymap[k] = v
+
+    # Create keymaps. These define the actions to be performed when a keybind is pressed.
+    # Any names that aren't in KEY_BINDS will automatically be ignored
+    Util.add_underlay_keymap(toggle_gallery_window=Function(gm.windows.toggle, "gallery"))
+    Util.add_underlay_keymap(toggle_punish_window=Function(gm.windows.toggle, "punish"))
+    Util.add_underlay_keymap(gallery_prev_image=Function(features.gallery.cycle_image, -1))
+    Util.add_underlay_keymap(gallery_next_image=Function(features.gallery.cycle_image, 1))
+
+    Util.add_underlay_keymap(gallery_zoom_out=Function(features.gallery.modify_image_zoom, -0.05))
+    Util.add_underlay_keymap(gallery_zoom_in=Function(features.gallery.modify_image_zoom, 0.05))
+    Util.add_underlay_keymap(gallery_zoom_reset=Function(features.gallery.set_image_zoom, GALLERY_DEFAULT_ZOOM))
+    Util.add_underlay_keymap(gallery_move_left=Function(features.gallery.modify_image_pos, -0.02, "x"))
+    Util.add_underlay_keymap(gallery_move_right=Function(features.gallery.modify_image_pos, 0.02, "x"))
+    Util.add_underlay_keymap(gallery_move_up=Function(features.gallery.modify_image_pos, -0.02, "y"))
+    Util.add_underlay_keymap(gallery_move_down=Function(features.gallery.modify_image_pos, 0.02, "y"))
+    Util.add_underlay_keymap(gallery_move_reset=Function(features.gallery.set_image_pos))
 
 
 # Initialize common images
