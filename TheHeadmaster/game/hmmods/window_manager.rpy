@@ -32,8 +32,7 @@ init -1 python:
             #     return
             win = self.get(drags[0].drag_name)
             if win:
-                win.position.x = drags[0].x
-                win.position.y = drags[0].y
+                win.position = Vector2(drags[0].x, drags[0].y)
 
         def remove(self, name):
             win = self.get(name)

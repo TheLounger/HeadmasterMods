@@ -27,9 +27,9 @@ init -1 python:
     }
 
     # Default values/settings
-    DEFAULT_WINDOW_POSITION =  { "x": 145, "y": 84 }
+    DEFAULT_WINDOW_POSITION = Vector2(145, 84)
     GALLERY_DEFAULT_ZOOM = 1.0
-    GALLERY_DEFAULT_POSITION = { "x": 0.5, "y": 0.5 }
+    GALLERY_DEFAULT_POSITION = Vector2.half()
     GALLERY_DEFAULT_BG_ALPHA = 0.85
     GALLERY_DEFAULT_IMAGES = [
         "amy post_punish", "amy run13.jpg", "amy spank1.png", "bg os2.jpg", "board sue_manic1.jpg", "cass faye_hall2.jpg",

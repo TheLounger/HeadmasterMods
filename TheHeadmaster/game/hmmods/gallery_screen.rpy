@@ -14,8 +14,8 @@ screen hmmods_gallery:
             yalign 0.5
     else:
         add "[features.gallery.image.file_path]" at gallery_image_transform:
-            xpos features.gallery.image_position["x"]
-            ypos features.gallery.image_position["y"]
+            xpos features.gallery.image_position.x
+            ypos features.gallery.image_position.y
             zoom features.gallery.image_zoom
 
     # File browser
@@ -114,10 +114,10 @@ screen hmmods_gallery:
             vbox xalign 0.99 yalign 0.01:
 
                 text "xpos: {} ({})  ypos: {} ({})".format(
-                        config.screen_width * features.gallery.image_position["x"],
-                        features.gallery.image_position["x"],
-                        config.screen_height * features.gallery.image_position["y"],
-                        features.gallery.image_position["y"]):
+                        config.screen_width * features.gallery.image_position.x,
+                        features.gallery.image_position.x,
+                        config.screen_height * features.gallery.image_position.y,
+                        features.gallery.image_position.y):
                     color "#555"
 
                 if features.gallery.image:

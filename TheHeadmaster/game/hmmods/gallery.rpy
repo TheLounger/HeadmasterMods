@@ -142,12 +142,11 @@ init -1 python:
                 pos = GALLERY_DEFAULT_POSITION.copy()
 
                 if x is not None:
-                    pos["x"] = x
+                    pos.x = x
                 if y is not None:
-                    pos["y"] = y
+                    pos.y = y
 
-                self.__image_position["x"] = round(pos["x"], 2)
-                self.__image_position["y"] = round(pos["y"], 2)
+                self.__image_position = Vector2(round(pos.x, 2), round(pos.y, 2))
 
         def modify_image_pos(self, modifier=0.0, axis="x"):
             """
@@ -157,5 +156,10 @@ init -1 python:
                 modifier = -modifier
 
             pos = self.__image_position.copy()
-            pos[axis] = round(pos[axis] + modifier, 2)
-            self.set_image_pos(pos["x"], pos["y"])
+
+            if axis == "x":
+                pos.x = round(pos.x + modifier, 2)
+            else:
+                pos.y = round(pos.y + modifier, 2)
+
+            self.set_image_pos(pos.x, pos.y)

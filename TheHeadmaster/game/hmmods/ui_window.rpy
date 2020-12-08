@@ -7,9 +7,7 @@ init -2 python:
         __metaclass__ = ABCMeta
 
         def __init__(self):
-            self.position = { }
-            self.position.x = DEFAULT_WINDOW_POSITION["x"]
-            self.position.y = DEFAULT_WINDOW_POSITION["y"]
+            self.position = DEFAULT_WINDOW_POSITION.copy()
 
         @abstractproperty
         def name(self):
