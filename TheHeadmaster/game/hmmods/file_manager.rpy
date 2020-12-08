@@ -55,10 +55,9 @@ init -1 python:
             self.__images = [ ]
             self.refresh_files()
 
-            if len(self.__files) > 0:
-                for i in self.__files:
-                    if i.startswith("images/"):
-                        self.__images.append(ImageInfo(i, len(self.__images)))
+            for i in self.__files:
+                if i.startswith("images/"):
+                    self.__images.append(ImageInfo(i, len(self.__images)))
 
         def __str__(self):
             return "files: %d, images: %d" % (len(self.__files), len(self.__images))
