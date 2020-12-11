@@ -1,8 +1,21 @@
 init -1 python:
     class Punish(UIWindow):
+        characters = {
+            "amy": "Amy",
+            "cass": "Cassandra",
+            "debbie": "Debbie",
+            "rachel": "Rachel"
+        }
+
         @property
         def name(self):
             return "punish"
+
+        def start_punish(self, character):
+            if character in Punish.characters:
+                gm.windows.hide_all()
+                renpy.call("call_label", "{}_punish".format(character))
+            return
 
 
 # Initialze punish window images

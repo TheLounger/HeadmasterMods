@@ -13,28 +13,19 @@ screen hmmods_punish:
             style "menu_frame"
 
             # Character image buttons
-            hbox spacing 14:
+            vbox spacing 14:
+                default keys = sorted(Punish.characters.keys())
+                default count = len(keys)
 
-                vbox spacing 6:
+                # Create rows of buttons
+                for i in range(0, count, 2):
+                    hbox spacing 14:
 
-                    text "Amy" style "menu_text"
-                    imagebutton:
-                        auto "punish_image_amy_%s"
-                        action [ Function(gm.windows.hide_all), Call("call_label", "amy_punish") ]
+                        # Max two buttons per row
+                        for j in range(0, min(count - i, 2)):
+                            vbox spacing 6:
 
-                    text "Cassandra" style "menu_text"
-                    imagebutton:
-                        auto "punish_image_cass_%s"
-                        action [ Function(gm.windows.hide_all), Call("call_label", "cass_punish") ]
-
-                vbox spacing 6:
-
-                    text "Debbie" style "menu_text"
-                    imagebutton:
-                        auto "punish_image_debbie_%s"
-                        action [ Function(gm.windows.hide_all), Call("call_label", "debbie_punish") ]
-
-                    text "Rachel" style "menu_text"
-                    imagebutton:
-                        auto "punish_image_rachel_%s"
-                        action [ Function(gm.windows.hide_all), Call("call_label", "rachel_punish") ]
+                                text Punish.characters[keys[i + j]] style "menu_text"
+                                imagebutton:
+                                    auto "punish_image_{}_%s".format(keys[i + j])
+                                    action Function(features.punish.start_punish, keys[i + j])
