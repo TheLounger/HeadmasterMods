@@ -11,15 +11,8 @@ init -1 python:
         def name(self):
             return "punish"
 
-        @staticmethod
-        def is_game_ready():
-            return "first_morning" in globals() and "update_check1" in globals() and update_check1 == True
-
         def start_punish(self, character):
-            global first_morning
-
-            if not Punish.is_game_ready():
-                renpy.notify("Complete the intro first")
+            if not gm.game_state.is_game_ready(intro_completed=True, notify_unready=True):
                 return
 
             if character in Punish.characters:
