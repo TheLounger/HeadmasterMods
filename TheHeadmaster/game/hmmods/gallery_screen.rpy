@@ -21,7 +21,7 @@ screen hmmods_gallery:
     # File browser
     if features.gallery.show_browser:
         drag:
-            drag_name "gallery"
+            drag_name features.gallery.name
             dragged gm.windows.on_drag
             xpos features.gallery.position.x
             ypos features.gallery.position.y

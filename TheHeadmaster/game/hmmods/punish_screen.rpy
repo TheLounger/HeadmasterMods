@@ -4,7 +4,7 @@ screen hmmods_punish:
     modal True
 
     drag:
-        drag_name "punish"
+        drag_name features.punish.name
         dragged gm.windows.on_drag
         xpos features.punish.position.x
         ypos features.punish.position.y
