@@ -12,6 +12,7 @@ init -1 python:
 
         "toggle_gallery_window": [ "K_g" ],
         "toggle_punish_window": [ "K_c" ],
+        "toggle_store_items_window": [ "K_i" ],
 
         "gallery_prev_image": [ "K_KP1" ],
         "gallery_next_image": [ "K_KP3" ],

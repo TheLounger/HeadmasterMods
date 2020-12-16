@@ -22,7 +22,7 @@ init -1 python:
             return
 
 
-# Initialze punish window images
+# Initialize punish window images
 init:
     image punish_image_amy_idle = im.Scale("amy photo_d1_face.jpg", 224, 126, bilinear=True)
     image punish_image_amy_hover = im.MatrixColor(ImageReference("punish_image_amy_idle"), im.matrix.brightness(0.11))

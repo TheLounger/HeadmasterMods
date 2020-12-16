@@ -11,6 +11,7 @@ init python:
     features = { }
     features.gallery = Gallery()
     features.punish = Punish()
+    features.store_items = StoreItems()
 
     # Add all features to window manager
     for i in vars(features).values():
@@ -22,8 +23,9 @@ init python:
 
     # Create keymaps. These define the actions to be performed when a keybind is pressed.
     # Any names that aren't in KEY_BINDS will automatically be ignored
-    Util.add_underlay_keymap(toggle_gallery_window=Function(gm.windows.toggle, "gallery"))
-    Util.add_underlay_keymap(toggle_punish_window=Function(gm.windows.toggle, "punish"))
+    Util.add_underlay_keymap(toggle_gallery_window=Function(gm.windows.toggle, features.gallery.name))
+    Util.add_underlay_keymap(toggle_punish_window=Function(gm.windows.toggle, features.punish.name))
+    Util.add_underlay_keymap(toggle_store_items_window=Function(gm.windows.toggle, features.store_items.name))
     Util.add_underlay_keymap(gallery_prev_image=Function(features.gallery.cycle_image, -1))
     Util.add_underlay_keymap(gallery_next_image=Function(features.gallery.cycle_image, 1))
     Util.add_underlay_keymap(gallery_zoom_out=Function(features.gallery.modify_image_zoom, -0.05))
